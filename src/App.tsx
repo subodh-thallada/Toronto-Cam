@@ -79,7 +79,6 @@ function App() {
   const popupRef = useRef<mapboxgl.Popup | null>(null)
   const markersRef = useRef<mapboxgl.Marker[]>([])
   const [cameraCount, setCameraCount] = useState(0)
-  const [lastUpdated, setLastUpdated] = useState('')
   const [error, setError] = useState('')
   const [interactionStatus, setInteractionStatus] = useState(
     'Waiting for map interaction',
@@ -171,7 +170,6 @@ function App() {
         })
 
         setCameraCount(data.features.length)
-        setLastUpdated(new Date().toLocaleString())
         setInteractionStatus(`Loaded ${data.features.length} camera markers`)
 
         if (!bounds.isEmpty()) {
