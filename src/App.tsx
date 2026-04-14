@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import mapboxgl, { LngLatBounds } from 'mapbox-gl'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faExternalLink } from '@fortawesome/free-solid-svg-icons'
 import './App.css'
 
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN
@@ -133,7 +135,7 @@ function App() {
           )
 
           markerElement.addEventListener('mouseenter', () => {
-            setInteractionStatus(`Hovering camera #${camera.REC_ID}`)
+            setInteractionStatus(`Hovering over camera #${camera.REC_ID}`)
           })
 
           markerElement.addEventListener('click', () => {
@@ -205,8 +207,13 @@ function App() {
   return (
     <main className="app-shell">
       <section className="hero-panel">
-        <p className="hero-panel__kicker">Toronto Traffic Cam Photobooth</p>
-        <h1>Live Toronto traffic cameras on a dark Mapbox canvas.</h1>
+        <p className="hero-panel__kicker">
+          Made by{' '}
+          <a href="https://x.com/SubodhThallada" target="_blank" rel="noopener noreferrer">{' '}
+            <FontAwesomeIcon icon={faExternalLink} />
+          </a>
+        </p>
+        <h1>Live Toronto traffic camera feed.</h1>
         <p className="hero-panel__lede">
           Browse the city, click any glowing pin, and pop open the latest camera
           still from Toronto Open Data.
@@ -218,19 +225,10 @@ function App() {
             <strong>{cameraCount || '...'}</strong>
           </div>
           <div>
-            <span>Data refresh</span>
-            <strong>{lastUpdated || 'Waiting for feed'}</strong>
-          </div>
-          <div>
             <span>Last interaction</span>
             <strong>{interactionStatus}</strong>
           </div>
         </div>
-
-        <p className="hero-panel__note">
-          Camera dots are lightweight location markers only. The image request is sent
-          only after you click a camera.
-        </p>
 
         {!MAPBOX_TOKEN ? (
           <div className="status-card status-card--warning">
