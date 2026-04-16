@@ -1,6 +1,8 @@
 # Toronto Traffic Cam Photobooth
 
-A dark-themed React + Vite webapp that renders Toronto's public traffic camera network on a Mapbox map. Click any camera pin to open the latest still image from the City of Toronto feed.
+Toronto's public traffic camera network on a map. Click any camera pin to open the latest still image from the City of Toronto feed.
+
+https://toronto-cam.vercel.app/
 
 ## Setup
 
